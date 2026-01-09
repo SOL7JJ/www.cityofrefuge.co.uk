@@ -15,13 +15,18 @@ function Header() {
     <header className="navbar">
       <div className="navbar-container">
         {/* Logo Section */}
-        <div className="logo-section">
-          <img src={logo} alt="Logo" className="logo-image" />
-          <div className="logo-container">
-            <h2 className="logo">CITY OF REFUGE</h2>
-            <p className="tagline">INTERNATIONAL MINISTRIES</p>
-          </div>
-        </div>
+
+<Link to="/home" onClick={() => setIsOpen(false)} className="logo-link">
+  <div className="logo-section">
+    <img src={logo} alt="Logo" className="logo-image" />
+    <div className="logo-container">
+      <h2 className="logo">CITY OF REFUGE</h2>
+      <p className="tagline">INTERNATIONAL MINISTRIES</p>
+    </div>
+  </div>
+</Link>
+
+        
 
         {/* Hamburger menu */}
         <button
