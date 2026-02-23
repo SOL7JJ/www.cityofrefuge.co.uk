@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useMemo } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
@@ -12,20 +12,40 @@ const Contact = lazy(() => import('./pages/Contact/Contact.jsx'));
 const Donation = lazy(() => import('./pages/Donation/Donation.jsx'));
 const Testimonies = lazy(() => import('./pages/Testimonies/Testimonies.jsx'));
 
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-1CYH4PP6H4';
+const CITY_GA_MEASUREMENT_ID =
+  import.meta.env.VITE_GA_CITY_MEASUREMENT_ID ||
+  import.meta.env.VITE_GA_MEASUREMENT_ID ||
+  'G-1CYH4PP6H4';
+const GUITAR_GA_MEASUREMENT_ID = import.meta.env.VITE_GA_GUITAR_MEASUREMENT_ID || '';
+const FALLBACK_GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || '';
+
+const CITY_HOSTS = ['cityofrefuge.co.uk', 'www.cityofrefuge.co.uk', 'sol7jj.github.io'];
+const GUITAR_HOSTS = ['yourguitarandpianolessons.co.uk', 'www.yourguitarandpianolessons.co.uk'];
+
+function resolveGaMeasurementId(hostname) {
+  const cleanHost = (hostname || '').toLowerCase();
+
+  if (CITY_HOSTS.includes(cleanHost)) return CITY_GA_MEASUREMENT_ID;
+  if (GUITAR_HOSTS.includes(cleanHost)) return GUITAR_GA_MEASUREMENT_ID || FALLBACK_GA_MEASUREMENT_ID;
+  return FALLBACK_GA_MEASUREMENT_ID || CITY_GA_MEASUREMENT_ID;
+}
 
 function App() {
   const location = useLocation();
+  const gaMeasurementId = useMemo(() => {
+    if (typeof window === 'undefined') return '';
+    return resolveGaMeasurementId(window.location.hostname);
+  }, []);
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID) return;
+    if (!gaMeasurementId) return;
 
-    const existingScript = document.querySelector(`script[data-ga-id="${GA_MEASUREMENT_ID}"]`);
+    const existingScript = document.querySelector(`script[data-ga-id="${gaMeasurementId}"]`);
     if (!existingScript) {
       const script = document.createElement('script');
       script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-      script.dataset.gaId = GA_MEASUREMENT_ID;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`;
+      script.dataset.gaId = gaMeasurementId;
       document.head.appendChild(script);
     }
 
@@ -37,18 +57,18 @@ function App() {
       };
 
     window.gtag('js', new Date());
-    window.gtag('config', GA_MEASUREMENT_ID, { send_page_view: false });
-  }, []);
+    window.gtag('config', gaMeasurementId, { send_page_view: false });
+  }, [gaMeasurementId]);
 
   useEffect(() => {
-    if (!GA_MEASUREMENT_ID || !window.gtag) return;
+    if (!gaMeasurementId || !window.gtag) return;
 
     window.gtag('event', 'page_view', {
       page_path: `${location.pathname}${location.search}`,
       page_title: document.title,
       page_location: window.location.href,
     });
-  }, [location]);
+  }, [location, gaMeasurementId]);
 
   return (
     <div className="app-container">
