@@ -1,5 +1,5 @@
 import './Home.css';
-import churchImage from '../../assets/church.jpg';
+import homeImage from '../../assets/home.jpg';
 
 
 
@@ -11,7 +11,7 @@ export default function Home() {
       {/* Church Image Section */}
       <section className="church-image-section">
         <img
-          src={churchImage}
+          src={homeImage}
           alt="City of Refuge International Ministries church service"
           className="church-image"
           loading="eager"
