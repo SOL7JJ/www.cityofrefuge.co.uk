@@ -12,7 +12,7 @@ const Contact = lazy(() => import('./pages/Contact/Contact.jsx'));
 const Donation = lazy(() => import('./pages/Donation/Donation.jsx'));
 const Testimonies = lazy(() => import('./pages/Testimonies/Testimonies.jsx'));
 
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-1CYH4PP6H4';
 
 function App() {
   const location = useLocation();
