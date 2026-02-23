@@ -1,5 +1,5 @@
 import './Home.css';
-import homeImage from '../../assets/home-latest.jpg';
+import homeImage from '../../assets/home-hero.jpg';
 
 
 
