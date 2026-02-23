@@ -5,14 +5,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "vite",
     "predeploy": "npm run build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test": "react-scripts test",
+    "test": "echo \"No tests configured yet\"",
     "preview": "vite preview",
-    "eject": "react-scripts eject",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

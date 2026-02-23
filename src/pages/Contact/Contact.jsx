@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Contact.css';
 
 export default function Contact() {
@@ -10,8 +10,11 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Message sent by ${form.name}`);
-    // You can also add logic to send the message to a server here
+    const subject = encodeURIComponent(`Website contact from ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:corim@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (

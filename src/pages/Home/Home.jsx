@@ -1,9 +1,5 @@
-import React from 'react';
 import './Home.css';
 import churchImage from '../../assets/church.jpg';
-import Image from '../../assets/bible.jpg';
-import Image2 from '../../assets/PRAYER.jpg';
-import Image3 from '../../assets/BIBLE2.jpg';
 
 
 
@@ -14,7 +10,14 @@ export default function Home() {
 
       {/* Church Image Section */}
       <section className="church-image-section">
-        <img src={churchImage} alt="Grace Fellowship Church" className="church-image" />
+        <img
+          src={churchImage}
+          alt="City of Refuge International Ministries church service"
+          className="church-image"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
         <p className="church-caption">Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit</p>
       </section>
 

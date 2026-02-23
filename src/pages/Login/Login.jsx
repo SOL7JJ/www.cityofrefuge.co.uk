@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // <-- Add this
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 import './Login.css';
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Logged in with: ${formData.email}`);
+    setStatus('');
+    try {
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      setStatus('Login successful.');
+    } catch (error) {
+      setStatus(error.message);
+    }
   };
 
   return (
@@ -36,6 +45,7 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
+      {status && <p>{status}</p>}
 
       <p>
         Not a member yet? <Link to="/register">Register</Link>

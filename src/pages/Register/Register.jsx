@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
 import './Register.css';
 
 export default function Register() {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Registered: ${formData.username}, ${formData.email}`);
+    setStatus('');
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+      if (formData.username) {
+        await updateProfile(userCredential.user, { displayName: formData.username });
+      }
+      setStatus('Registration successful. You can now log in.');
+    } catch (error) {
+      setStatus(error.message);
+    }
   };
 
   return (
@@ -46,8 +62,8 @@ export default function Register() {
 
         <button type="submit">Register</button>
       </form>
+      {status && <p>{status}</p>}
 
-      {/* 🔥 New link to go back to Login */}
       <p>Already have an account? <Link to="/login">Login</Link></p>
     </div>
   );
