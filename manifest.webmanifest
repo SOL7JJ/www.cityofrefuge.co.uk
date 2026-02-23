@@ -1,0 +1,18 @@
+{
+  "name": "City of Refuge International Ministries",
+  "short_name": "City of Refuge",
+  "description": "Worship, testimonies, events, and ways to connect with City of Refuge International Ministries.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1877f2",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
