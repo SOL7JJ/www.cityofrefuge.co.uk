@@ -3,7 +3,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <p>&copy; 2025 JJ technologies</p>
+      <p>&copy; 2026 - jjai.dev.</p>
     </footer>
   );
 }
