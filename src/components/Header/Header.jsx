@@ -33,8 +33,7 @@ function Header() {
 
         <div className="nav-spacer" />
 
-        <div className={`menu-overlay ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(false)} />
-        <aside id="site-menu" className={`side-menu ${isOpen ? "open" : ""}`}>
+        <nav id="site-menu" className={`dropdown-menu ${isOpen ? "open" : ""}`}>
           <ul className="nav-links">
             <li><Link to="/home" onClick={() => setIsOpen(false)}>HOME</Link></li>
             <li><Link to="/about" onClick={() => setIsOpen(false)}>ABOUT</Link></li>
@@ -45,7 +44,7 @@ function Header() {
             <li><Link to="/login" onClick={() => setIsOpen(false)}>LOGIN</Link></li>
             <li><Link to="/register" onClick={() => setIsOpen(false)}>REGISTER</Link></li>
           </ul>
-        </aside>
+        </nav>
       </div>
     </header>
   );
