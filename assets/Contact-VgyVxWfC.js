@@ -1,4 +1,4 @@
-import{r as i,j as a}from"./index-SRWUrk_u.js";function l(){const[e,o]=i.useState({name:"",email:"",message:""}),n=t=>{o({...e,[t.target.name]:t.target.value})},s=t=>{t.preventDefault();const m=encodeURIComponent(`Website contact from ${e.name}`),r=encodeURIComponent(`Name: ${e.name}
+import{r as i,j as a}from"./index-ByNwpmsP.js";function l(){const[e,o]=i.useState({name:"",email:"",message:""}),n=t=>{o({...e,[t.target.name]:t.target.value})},s=t=>{t.preventDefault();const m=encodeURIComponent(`Website contact from ${e.name}`),r=encodeURIComponent(`Name: ${e.name}
 Email: ${e.email}
 
 Message:
