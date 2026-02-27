@@ -82,6 +82,25 @@ body {
   transform: translateY(-2px);
 }
 
+.contact-container button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-status {
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.form-status.success {
+  color: #1f7a33;
+}
+
+.form-status.error {
+  color: #b42318;
+}
+
 /* Animations */
 @keyframes fadeInDown {
   from {
