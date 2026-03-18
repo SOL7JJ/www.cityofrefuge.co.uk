@@ -21,6 +21,7 @@ const FALLBACK_GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID || '';
 
 const CITY_HOSTS = ['cityofrefuge.co.uk', 'www.cityofrefuge.co.uk', 'sol7jj.github.io'];
 const GUITAR_HOSTS = ['yourguitarandpianolessons.co.uk', 'www.yourguitarandpianolessons.co.uk'];
+const CITY_SITE_REOPEN_AT = '2026-04-01T00:00:00Z';
 
 function resolveGaMeasurementId(hostname) {
   const cleanHost = (hostname || '').toLowerCase();
@@ -28,6 +29,18 @@ function resolveGaMeasurementId(hostname) {
   if (CITY_HOSTS.includes(cleanHost)) return CITY_GA_MEASUREMENT_ID;
   if (GUITAR_HOSTS.includes(cleanHost)) return GUITAR_GA_MEASUREMENT_ID || FALLBACK_GA_MEASUREMENT_ID;
   return FALLBACK_GA_MEASUREMENT_ID || CITY_GA_MEASUREMENT_ID;
+}
+
+function TemporaryUnavailablePage() {
+  return (
+    <main className="temporary-unavailable">
+      <p className="temporary-unavailable-code">404</p>
+      <h1>Page Not Found</h1>
+      <p>
+        This website is temporarily unavailable and will be restored on April 1, 2026.
+      </p>
+    </main>
+  );
 }
 
 function App() {
@@ -69,6 +82,20 @@ function App() {
       page_location: window.location.href,
     });
   }, [location, gaMeasurementId]);
+
+  const isCityHost = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return CITY_HOSTS.includes(window.location.hostname.toLowerCase());
+  }, []);
+
+  const isTemporarilyUnavailable = useMemo(() => {
+    if (!isCityHost || typeof window === 'undefined') return false;
+    return Date.now() < new Date(CITY_SITE_REOPEN_AT).getTime();
+  }, [isCityHost]);
+
+  if (isTemporarilyUnavailable) {
+    return <TemporaryUnavailablePage />;
+  }
 
   return (
     <div className="app-container">
