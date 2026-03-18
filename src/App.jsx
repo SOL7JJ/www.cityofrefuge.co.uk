@@ -36,9 +36,6 @@ function TemporaryUnavailablePage() {
     <main className="temporary-unavailable">
       <p className="temporary-unavailable-code">404</p>
       <h1>Page Not Found</h1>
-      <p>
-        This website is temporarily unavailable and will be restored on April 1, 2026.
-      </p>
     </main>
   );
 }
