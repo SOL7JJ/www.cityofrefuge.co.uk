@@ -3,9 +3,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <a href="https://jjai.dev" target="_blank" rel="noreferrer">
-        &copy; 2026 - jjai.dev
-      </a>
+      <p>&copy; 2026 City of Refuge International Ministries</p>
     </footer>
   );
 }

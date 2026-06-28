@@ -1,88 +1,70 @@
 .about-section {
-  background-color: #f9fafb;
-  padding: 80px 20px;
+  padding: 76px 20px;
 }
 
 .about-container {
   max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 46px;
   align-items: center;
-  justify-content: space-between;
 }
 
 .about-text {
-  flex: 1 1 500px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 34px;
+  box-shadow: var(--shadow-card);
 }
 
 .about-title {
-  font-family: 'Montserrat';
-  font-size: 2.5rem;
-  color: #1e3a8a;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.08;
+  color: var(--color-ink);
   margin-bottom: 20px;
 }
 
 .about-paragraph {
-  font-family: 'Montserrat';
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.7;
-  color: #444;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease forwards;
+  color: var(--color-muted);
+  margin: 0 0 16px;
 }
 
-.about-paragraph:nth-child(2) { animation-delay: 0.2s; }
-.about-paragraph:nth-child(3) { animation-delay: 0.4s; }
-.about-paragraph:nth-child(4) { animation-delay: 0.6s; }
-.about-paragraph:nth-child(5) { animation-delay: 0.8s; }
-.about-paragraph:nth-child(6) { animation-delay: 1s; }
-.about-paragraph:nth-child(7) { animation-delay: 1.2s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.about-paragraph:last-child {
+  margin-bottom: 0;
 }
 
 .about-image-wrapper {
-  flex: 1 1 400px;
-  text-align: center;
+  margin: 0;
 }
 
 .about-image {
   width: 100%;
-  max-width: 400px;
-  border-radius: 15px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 430px;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
 }
 
 .image-caption {
-  margin-top: 10px;
-  font-size: 0.95rem;
-  color: #555;
+  margin: 12px auto 0;
+  max-width: 430px;
+  font-size: 0.92rem;
+  color: var(--color-muted);
+  text-align: center;
 }
 
-/* Responsive */
 @media screen and (max-width: 768px) {
   .about-container {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr;
   }
 
-  .about-text, .about-image-wrapper {
-    flex: 1 1 100%;
-  }
-
-  .about-title {
-    font-size: 2rem;
-  }
-
-  .about-paragraph {
-    font-size: 1rem;
+  .about-text {
+    padding: 24px;
   }
 }

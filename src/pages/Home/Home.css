@@ -1,277 +1,135 @@
-/* Reset some default browser styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body,
-html {
-  font-family: 'Montserrat';
-  line-height: 1.6;
-  background: white;
-}
-
 .home-container {
-  font-family: 'Montserrat';
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  background: white;
 }
 
-
-/* Hero Section */
-.hero {
-  background: #f8f9fa;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  padding: 40px 20px;
-  position: relative;
-  overflow: hidden;
-  background: white;
-}
-
-.hero::after {
-  content: "";
-  background: none;
-  opacity: 0.05;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  
+.home-hero {
+  width: min(1180px, calc(100% - 32px));
+  min-height: calc(100vh - 86px);
+  margin: 0 auto;
+  padding: 54px 0 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  align-items: center;
+  gap: 44px;
 }
 
 .hero-title {
-  font-size: 3rem;
-  margin-bottom: 10px;
-  animation: fadeInDown 3s ease-in-out;
-  
+  max-width: 720px;
+  margin: 0;
+  color: var(--color-ink);
+  font-size: clamp(2.35rem, 5vw, 4.8rem);
+  line-height: 1.02;
+  font-weight: 800;
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  animation: fadeInUp 3s ease-in-out;
-  
+  max-width: 580px;
+  margin: 22px 0 0;
+  color: var(--color-muted);
+  font-size: 1.2rem;
 }
 
-.hero-button {
-  background-color: #4338ca;
-  color: white;
-  border: none;
-  padding: 14px 30px;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
 }
 
-.hero-button:hover {
-  background-color: white;
-  transform: translateY(-2px);
+.home-hero-media {
+  margin: 0;
+  position: relative;
 }
 
-/* Sections with Images */
-.church-image-section,
-.image-section,
-.image2-section,
-.image3-section,
-.services,
-.watch-online {
-  padding: 36px 20px;
-  text-align: center;
-  background-color: white;
-}
-
-.church-image,
-.image,
-.image2,
-.image3 {
-  width: min(1200px, 100%);
-  height: auto;
-  object-fit: contain;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: transform 0.6s ease;
-}
-
-.church-image:hover,
-.image:hover,
-.image2:hover,
-.image3:hover {
-  transform: scale(1.02);
+.church-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
 }
 
 .church-caption {
-  font-size: 1rem;
-  margin-top: 15px;
-  color: #555;
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  max-width: 280px;
+  margin: 0;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  color: var(--color-ink);
+  font-weight: 750;
+  box-shadow: 0 10px 26px rgba(23, 32, 51, 0.16);
 }
 
-/* Services Section */
-.section-title {
-  font-size: 2.2rem;
-  color: #1d4ed8;
-  margin-bottom: 20px;
+.home-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding: 18px 0 70px;
 }
 
-.service-time,
+.info-card {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.info-card h2 {
+  margin: 0 0 10px;
+  color: var(--color-ink);
+  font-size: 1.65rem;
+}
+
+.info-card p {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+}
+
+.service-time {
+  color: var(--color-primary-dark);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
 .service-location {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #444;
+  font-weight: 600;
 }
 
-/* Watch Online Section */
-.watch-description {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.watch-button {
-  background-color: #4f46e5;
-  color: white;
-  padding: 14px 30px;
-  border-radius: 40px;
-  font-weight: bold;
-  font-size: 1rem;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.watch-button:hover {
-  background-color: #4338ca;
-  transform: translateY(-2px);
-}
-
-/* Animations */
-@keyframes fadeInDown {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .hero-title {
-    font-size: 2.5rem;
+@media screen and (max-width: 900px) {
+  .home-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding-top: 36px;
+    gap: 28px;
   }
 
-  .hero-subtitle {
-    font-size: 1.2rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .church-image-section,
-  .services,
-  .watch-online,
-  .hero {
-    padding: 20px 12px;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .hero-subtitle,
-  .service-time,
-  .service-location,
-  .watch-description {
-    font-size: 1rem;
-    margin-bottom: 8px;
-  }
-
-  .hero-button,
-  .watch-button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
-
-  .church-image,
-  .image,
-  .image2,
-  .image3 {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .home-container {
-    padding: 0 8px;
-  }
-
-  .church-caption {
-    font-size: 0.95rem;
-    margin-top: 10px;
+  .home-info-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .church-image-section,
-  .services,
-  .watch-online,
-  .hero {
-    padding: 16px 10px;
-  }
-
-  .hero-title {
-    font-size: 1.55rem;
+  .home-hero {
+    width: min(100% - 24px, 1180px);
+    padding-top: 26px;
   }
 
   .hero-subtitle {
-    font-size: 0.92rem;
+    font-size: 1rem;
   }
 
-  .hero-button,
-  .watch-button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+  .hero-actions {
+    flex-direction: column;
   }
 
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .service-time,
-  .service-location {
-    font-size: 0.95rem;
-  }
-
-  .church-image,
-  .image,
-  .image2,
-  .image3 {
-    height: auto;
-    border-radius: 8px;
+  .church-caption {
+    position: static;
+    margin-top: 10px;
+    max-width: none;
   }
 }

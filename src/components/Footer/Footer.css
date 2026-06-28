@@ -1,24 +1,19 @@
 .footer {
   margin-top: 48px;
-  padding: 24px 16px;
-  background: #ffffff;
+  padding: 28px 16px;
+  background: #101827;
   text-align: center;
 }
 
-.footer a {
-  color: #000000;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.55rem;
-  font-weight: 400;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
+.footer p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {
-  .footer a {
+  .footer p {
     font-size: 1.1rem;
   }
 }

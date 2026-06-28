@@ -17,7 +17,7 @@ export default function Donation() {
         <h3 className="fade-in">Ways to Give</h3>
 
         <div className="donation-method fade-in">
-          <h4>💳 Bank Transfer</h4>
+          <h4>Bank Transfer</h4>
           <p><strong>Account Number:</strong> 9769785476</p>
           <p><strong>Sort Code:</strong> 553536</p>
           <p><strong>Account Name:</strong> city of refuge international ministries</p>
@@ -25,7 +25,7 @@ export default function Donation() {
         </div>
 
         <div className="donation-method fade-in">
-          <h4>🅿️ PayPal</h4>
+          <h4>PayPal</h4>
           <p>
             You can donate securely via PayPal using the email below:
           </p>
@@ -33,7 +33,7 @@ export default function Donation() {
         </div>
 
         <div className="donation-method fade-in">
-          <h4>🙏 Tithes & Offerings</h4>
+          <h4>Tithes & Offerings</h4>
           <p>
             If you'd like to give your tithe, sow a seed, or contribute a special offering, 
             please include a note with your donation so we can allocate it properly.
@@ -41,7 +41,7 @@ export default function Donation() {
         </div>
 
         <div className="donation-method fade-in">
-          <h4>📞 Need Help?</h4>
+          <h4>Need Help?</h4>
           <p>
             If you have questions or need help with giving, please don’t hesitate to contact us 
             at <strong>07903912594</strong> or speak to a leader after service.
